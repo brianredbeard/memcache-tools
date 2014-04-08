@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ "${MEMCACHED_SERVERS}foo" == "foo" ]; then 
+  if [ "${MC_PORT_11211_TCP_ADDR}foo" == "foo" ]; then
+    echo "ERROR: MEMCACHED_SERVERS was not set"
+    exit 90
+  else
+    export MEMCACHED_SERVERS="${MC_PORT_11211_TCP_ADDR}:${MC_PORT_11211_TCP_PORT:=11211}"
+  fi
+fi
+
+/bin/meminsert.py ${MEMCACHED_SERVERS}
