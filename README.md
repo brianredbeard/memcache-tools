@@ -18,7 +18,7 @@ three primitives available to the container:
 
 ```
 $ mkdir /tmp/test
-$ docker run --rm -e MEMCACHED_SERVERS=192.168.1.101:11211 -v /tmp/test:/tmp/memcache memcache-client dump
+$ docker run --rm -e MEMCACHED_SERVERS=192.168.1.101:11211 -v /tmp/test:/tmp/memcache brianredbeard/memcache-tools dump
 ```
 
 ## Examples
@@ -37,7 +37,7 @@ $ docker run -p 11211 -d --name memcached jacksoncage/memcache
 
 ```
 $ mkdir /tmp/test
-$ docker run --rm --link memcached:mc -v /tmp/test:/tmp/memcache memcache-client sample
+$ docker run --rm --link memcached:mc -v /tmp/test:/tmp/memcache brianredbeard/memcache-tools sample
 ```
 
 ### Verify that the data is there
@@ -81,7 +81,7 @@ Here we see that on slab 3 we have 899 values in the cache and that the key
 ### Dump the contents of the cache
 
 ```
-$ docker run --rm --link memcached:mc -v /tmp/test:/tmp/memcache memcache-client dump
+$ docker run --rm --link memcached:mc -v /tmp/test:/tmp/memcache brianredbeard/memcache-tools dump
 ```
 
 You will find that in /tmp/test there will be 899 files, each with the name of
@@ -108,7 +108,7 @@ no data returned.
 ### Reload our sample data
 
 ```
-$ docker run --rm --link memcached:mc -v /tmp/test:/tmp/memcache memcache-client load
+$ docker run --rm --link memcached:mc -v /tmp/test:/tmp/memcache brianredbeard/memcache-tools load
 ```
 
 At this point our data should be reloaded.
